@@ -5,13 +5,18 @@
 
 
 
-- 自定义修改预览界面，适配小区域
+### 自定义修改预览界面，适配小区域
   在非全屏的情况加，取景框的区域就是扫描框的大小，
-   // 1， 为二维码扫描界面设置定制化界面 最后参数false，代表非全屏状态
-          CodeUtils.setFragmentArgs(captureFragment, R.layout.my_camera,false);
+-  1， 为二维码扫描界面设置定制化界面 最后参数false，代表非全屏状态
+```
+CodeUtils.setFragmentArgs(captureFragment, R.layout.my_camera,false);
+```
+          
 
-   // 2, 扫描框 非全屏
-        <com.uuzuche.lib_zxing.view.ViewfinderView
+-  2, 扫描框 非全屏
+   
+```
+          <com.uuzuche.lib_zxing.view.ViewfinderView
                android:id="@+id/viewfinder_view"
                android:layout_width="match_parent"
                android:layout_height="match_parent"
@@ -26,22 +31,35 @@
                app:inner_scan_iscircle="false"
                app:is_all_screen="false" //非全屏状态要与上面一致
                />
-   // 3, 承载界面大小随意定，
+  ```
+        
+-  3, 承载界面大小随意定，
+ ```
     getSupportFragmentManager().beginTransaction().replace(R.id.fl_my_container, captureFragment).commit();
-    <FrameLayout
-            android:layout_gravity="center_horizontal"
-            android:id="@+id/fl_my_container"
-            android:layout_width="300dp"
-            android:layout_height="300dp"   //大小随意，
-            android:visibility="visible"
-            >
+       <FrameLayout
+               android:layout_gravity="center_horizontal"
+               android:id="@+id/fl_my_container"
+               android:layout_width="300dp"
+               android:layout_height="300dp"   //大小随意，
+               android:visibility="visible"
+               >
+       
+        </FrameLayout>
+```
+   
+
+- 全屏情况下
+- 1，参数为true
+```
+   CodeUtils.setFragmentArgs(captureFragment, R.layout.my_camera,true);
+
+
+```
+   
     
-    </FrameLayout>
-    
-    全屏情况下
-    1，参数为true
-    CodeUtils.setFragmentArgs(captureFragment, R.layout.my_camera,true);
-    2， <com.uuzuche.lib_zxing.view.ViewfinderView
+- 2  非全屏状态要与上面一致 
+```
+<com.uuzuche.lib_zxing.view.ViewfinderView
                      android:id="@+id/viewfinder_view"
                      android:layout_width="match_parent"
                      android:layout_height="match_parent"
@@ -56,10 +74,14 @@
                      app:inner_scan_iscircle="false"
                      app:is_all_screen="true" //非全屏状态要与上面一致
                      />
-        
-    3，    
-    承载界面大小match，
-        getSupportFragmentManager().beginTransaction().replace(R.id.fl_my_container, captureFragment).commit();
+
+
+```
+    
+-3  承载界面大小match，
+```
+
+getSupportFragmentManager().beginTransaction().replace(R.id.fl_my_container, captureFragment).commit();
         <FrameLayout
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/fl_my_container"
@@ -69,6 +91,11 @@
                 >
         
         </FrameLayout>
+        
+
+```
+        
+    
         
         
         
